@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ring Size</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        p {
+            margin: 10px 0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label for="beam_length_feet">Beam Length (Feet):</label>
+        <input type="number" name="beam_length_feet" required>
+        
+        <label for="beam_length_inches">(Inches):</label>
+        <input type="number" name="beam_length_inches" required>
+        <br>
+        <label for="beam_breadth_feet">Beam Breadth (Feet):</label>
+        <input type="number" name="beam_breadth_feet" required>
+        <label for="beam_breadth_inches">(Inches):</label>
+        <input type="number" name="beam_breadth_inches" step="0.01" required>
+        <br>
+        <label for="cover_value_feet">Cover Value (Feet):</label>
+        <input type="number" name="cover_value_feet" step="0.01" required>
+        <label for="cover_value_inches">(Inches):</label>
+        <input type="number" name="cover_value_inches" step="0.01" required>
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
